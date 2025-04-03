@@ -3,27 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Легенда Зары</title>
+    <title>Легенда Заровска</title>
     <style>
-        /* Загальні стилі */
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: "Courier New", Courier, monospace;
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #1e1e2e, #3a3a56);
+            background: #1e1e2e;
             color: #fff;
+            text-align: center;
+            overflow: auto; /* Включаємо прокручування */
+            position: relative;
+            white-space: pre-wrap;
         }
 
-        /* Заголовок */
         header {
             background: rgba(0, 0, 0, 0.7);
-            text-align: center;
             padding: 20px;
             font-size: 24px;
             font-weight: bold;
+            position: relative;
+            z-index: 10;
         }
 
-        /* Основний контейнер */
         main {
             max-width: 900px;
             margin: 20px auto;
@@ -31,71 +33,52 @@
             background: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+            position: relative;
+            z-index: 5; /* Головний контент знаходиться поверх анімацій */
         }
 
-        /* Заголовки */
-        h2 {
-            border-bottom: 2px solid #ff9800;
-            padding-bottom: 5px;
+        .pisyun {
+            position: absolute;
+            font-size: 30px;
+            color: #ffcc00; /* Жовтий колір */
+            user-select: none;
+            transform-origin: center;
+            animation: float 10s infinite linear, wiggle 1s infinite ease-in-out;
+            z-index: 0; /* Елементи з анімацією знаходяться позаду основного контенту */
         }
 
-        /* Секції */
-        section {
-            margin-bottom: 30px;
-            padding: 15px;
-            border-radius: 10px;
+        @keyframes float {
+            0% {
+                transform: translate(0, 0);
+            }
+            50% {
+                transform: translate(100vw, 100vh);
+            }
+            100% {
+                transform: translate(0, 0);
+            }
         }
 
-        /* Фото */
-        .photos {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            flex-wrap: wrap;
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(5deg); }
         }
 
-        .photos img {
-            width: 120px;
-            height: 120px;
-            object-fit: cover;
-            border-radius: 10px;
-            transition: transform 0.3s ease;
-        }
-
-        .photos img:hover {
-            transform: scale(1.1);
-        }
-
-        /* Список фактів */
-        .facts ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .facts li {
-            padding: 8px;
-            background: rgba(255, 255, 255, 0.2);
-            margin: 5px 0;
-            border-radius: 5px;
-        }
-
-        /* Футер */
-        footer {
-            text-align: center;
-            padding: 10px;
-            background: rgba(0, 0, 0, 0.5);
-            margin-top: 20px;
-        }
+        /* Різні кольори для пісюнів */
+        .color1 { color: #ffcc00; } /* Жовтий */
+        .color2 { color: #ffffff; } /* Білий */
+        .color3 { color: #ff0000; } /* Червоний */
+        .color4 { color: #000000; } /* Чорний */
     </style>
 </head>
 <body>
     <header>
-        <h1>Легенда Зары: Камизельщик года</h1>
+        <h1>Легенда Заровска: Камизельщик года</h1>
     </header>
     <main>
         <section class="about">
             <h2>О нём</h2>
-            <p>Прикольный парень с большими амбициями и маленьким членом. Любит страдать фигнёй, но так и не разобрался, как это делать профессионально.</p>
+            <p>Прикольный парень с большими амбициями и маленьким... терпением. Любит страдать фигнёй, но так и не разобрался, как это делать профессионально.</p>
         </section>
         <section class="gallery">
             <h2>Фотоэпос</h2>
@@ -109,14 +92,14 @@
         <section class="facts">
             <h2>Интересные факты</h2>
             <ul>
-                <li>Работает чёрной камизелькой на Заре (но мечтает о PornHub).</li>
-                <li>Не может вступать в отношения в этом году — изза боязни дырок на штанах.</li>
+                <li>Работает чёрной камизелькой на Заре (но мечтает о Netflix).</li>
+                <li>Не может вступать в отношения в этом году — судьба решила за него.</li>
                 <li>Был замечен в сомнительных компаниях, но утверждает, что это для "контента".</li>
                 <li>Однажды в процессе занятий любовью обнаружил, что контроллером был не он.</li>
             </ul>
         </section>
         <section class="jokes">
-            <h2>Краткое инфо о нем</h2>
+            <h2>Шутки про него</h2>
             <p>В сексе он как Windows XP: долго грузится, но зато синий экран редко вылетает.</p>
             <p>Девушки говорят, что он идеален… если выключить свет и представить другого.</p>
             <p>Он, как скидка в Zara — вроде есть, но по факту никому не нужен.</p>
@@ -125,5 +108,33 @@
     <footer>
         <p>Сайт сделан для мемов, не воспринимать всерьёз! 🚀</p>
     </footer>
+
+    <script>
+        function createPisyun() {
+            const pisyun = document.createElement("div");
+            pisyun.classList.add("pisyun");
+            
+            // Випадковий вибір кольору та розміру
+            const size = Math.random() * 30 + 25;
+            pisyun.style.fontSize = size + "px";
+            pisyun.style.left = Math.random() * window.innerWidth + "px";
+            pisyun.style.top = Math.random() * window.innerHeight + "px";
+
+            // Випадковий вибір кольору
+            const colors = ["color1", "color2", "color3", "color4"];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            pisyun.classList.add(randomColor);
+
+            // Створення нових символів
+            pisyun.innerText = `Ɑ͞ ̶͞ ̶͞ ̶͞ ﻝﮞ͞`;
+
+            document.body.appendChild(pisyun);
+        }
+
+        // Створюємо 30 випадкових піксельних писюнів на сторінці
+        for (let i = 0; i < 30; i++) {
+            createPisyun();
+        }
+    </script>
 </body>
 </html>
